@@ -2,15 +2,40 @@ package noSQL
 
 import (
 	"context"
+	"fmt"
+	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+var instanceDB *mongo.Client
 
 type Ip struct {
 	IPAddress   string
 	Count       int
 	ExpiresTime int64
+}
+
+func GetInstanceDB() *mongo.Client {
+	if instanceDB == nil {
+		// Set client options
+		clientOptions := options.Client().ApplyURI("mongodb://root:example@localhost:27017")
+		// Connect to MongoDB
+		client, err := mongo.Connect(context.TODO(), clientOptions)
+		if err != nil {
+			log.Fatal(err)
+		}
+		// Check the connection
+		err = client.Ping(context.TODO(), nil)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("Connected to MongoDB!")
+		instanceDB = client
+	}
+	return instanceDB
 }
 
 func ReadIPDocument(collection *mongo.Collection, field interface{}) (Ip, error) { //TODO:調整讓此不為空interface

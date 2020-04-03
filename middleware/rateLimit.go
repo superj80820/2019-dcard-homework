@@ -1,18 +1,14 @@
 package middleware
 
 import (
-	"context"
 	noSQL "dcard-homework/model"
 	"dcard-homework/utils"
 	"fmt"
-	"log"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func RateLimit() gin.HandlerFunc {
@@ -27,20 +23,8 @@ func RateLimit() gin.HandlerFunc {
 		c.Abort()
 	}
 
-	////////// Initialization DB //////////
-	// Set client options
-	clientOptions := options.Client().ApplyURI("mongodb://root:example@localhost:27017")
-	// Connect to MongoDB
-	client, err := mongo.Connect(context.TODO(), clientOptions)
-	if err != nil {
-		log.Fatal(err)
-	}
-	// Check the connection
-	err = client.Ping(context.TODO(), nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Connected to MongoDB!")
+	////////// Use singleton DB //////////
+	client := noSQL.GetInstanceDB()
 	collection := client.Database("test").Collection("limit")
 
 	return func(c *gin.Context) {
