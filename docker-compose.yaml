@@ -21,9 +21,10 @@ services:
   postgres:
     image: postgres
     restart: always
+    volumes:
+      - ./data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD:  example
     ports:
       - 5432:5432
 

@@ -1,4 +1,3 @@
-require('dotenv').config()
 const users = require('../model/users')
 const express = require('express');
 const router = express.Router();
