@@ -30,7 +30,7 @@ const _promisePgPoolQuery = (sql, sqlParams) => new Promise(resolve => {
   })
 })
 
-async function createUser (columns , promisePgPoolQueryHandler = _promisePgPoolQuery) {
+async function createUser (columns, promisePgPoolHandler = _promisePgPoolQuery) {
   ow(columns, ow.object.exactShape({
     name: ow.string,
     birthday: ow.string,
@@ -63,17 +63,17 @@ async function createUser (columns , promisePgPoolQueryHandler = _promisePgPoolQ
     columns.exchangeable,
     columns.trying
   ]
-  return await promisePgPoolQueryHandler(sql, params)
+  return await promisePgPoolHandler(sql, params)
 }
 
-async function queryUserByRandom (promisePgPoolQueryHandler = _promisePgPoolQuery) {
+async function queryUserByRandom (promisePgPoolHandler = _promisePgPoolQuery) {
   const sql = `
     SELECT * FROM users  
     ORDER BY random()
     LIMIT 1
   `
   const params = []
-  return await promisePgPoolQueryHandler(sql, params)
+  return await promisePgPoolHandler(sql, params)
 }
 
 module.exports = {

@@ -7,6 +7,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "jest",
+    "integrationTest": "npm run test ./__tests__/integrationTest",
+    "watchUnitTest": "npm run test -- --watch ./__tests__/unitTest",
     "migrate": "node-pg-migrate"
   },
   "author": "",
