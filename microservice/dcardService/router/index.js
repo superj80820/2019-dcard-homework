@@ -1,9 +1,14 @@
+require('dotenv').config()
+const users = require('../model/users')
 const express = require('express');
 const router = express.Router();
 
-router.get('/test', function (req, res) {
-  console.log(JSON.stringify(req.headers))
-  res.send('Hello World!');
+router.get('/random', async function (req, res) {
+  const [queryUserByRandomResult, queryUserByRandomError] = await users.queryUserByRandom()
+  if (queryUserByRandomError) {
+    // TODO: error handling
+  }
+  res.json(queryUserByRandomResult.rows);
 });
 
 module.exports = router;
