@@ -1,2 +1,2 @@
-###
+### Get random user for draw card
 GET http://localhost:8080/dcard/random HTTP/1.1
