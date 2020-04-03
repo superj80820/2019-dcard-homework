@@ -1,0 +1,22 @@
+{
+  "name": "dcard-homework",
+  "version": "1.0.0",
+  "description": "## dcardService",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "migrate-mongo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superj80820/dcard-homework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superj80820/dcard-homework/issues"
+  },
+  "homepage": "https://github.com/superj80820/dcard-homework#readme",
+  "devDependencies": {
+    "migrate-mongo": "^7.1.0"
+  }
+}
