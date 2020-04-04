@@ -1,4 +1,4 @@
-const users = require('../../model/users')
+import * as users from '../../../model/users'
 
 test('Should get create args', () => {
   const promisePgPoolHandler = jest.fn()

@@ -63,7 +63,6 @@ func RateLimit() gin.HandlerFunc {
 		} else {
 			now := time.Now().Unix()
 			insertIPDocumentResult, insertIPDocumentError := noSQL.InsertIPDocument(collection, ipaddress, now)
-			fmt.Println("york log: insertIP")
 			if insertIPDocumentError != nil {
 				fmt.Println("insertIPDocumentError(): ", insertIPDocumentError)
 				respondWithError(c, 500, "DB error")

@@ -1,5 +1,6 @@
-require('dotenv').config()
-const users = require('../model/users');
+import * as dotenv from "dotenv";
+dotenv.config();
+import * as users from '../model/users'
 
 (async () => {
   const [, createUserJohnError] = await users.createUser({
