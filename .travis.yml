@@ -1,8 +1,18 @@
-language: node_js
-node_js:
-  - "stable"
-before_script:
-  - cd microservice/dcardService
-  - npm install
-script:
-  - npm test
+
+
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - "stable"
+      before_script:
+        - cd microservice/dcardService
+        - npm install
+      script:
+        - npm test
+
+    - language: go
+      go:
+        - "stable"
+      script:
+        - go test ./test
