@@ -4,34 +4,46 @@
 
 ## API gateway
 
-### migrate
+### Migrate
 
 `npm run migrate up`
 
-### run
+### Run
 
 `go run main.go`
 
 ## dcardService
 
-### migrate
+### Migrate
 
 `DATABASE_URL=postgres://postgres:example@localhost:5432/postgres npm run migrate up`
 
-### seed
+### Create seed
 
-`node tools/testSeed.js`
+`npx ts-node tools/testSeed.ts`
 
-### run
+### Run
 
 `npm run start`
 
 ---
 
-## tool
+## Tools
 
 ### adminmongo connect
 
-`mongodb://root:example@mongo:27017`
+1. Open browser. Then connect to `localhost:1234`
+2. Set connection config
+    ```
+    Connection name: Any name
+    Connection string: mongodb://root:example@mongo:27017
+    ```
 
+### adminpostgres connect
 
+1. Open browser. Then connect to `localhost:8090`
+2. Set connection config
+    ```
+    Username: postgres
+    Password: example
+    ```
