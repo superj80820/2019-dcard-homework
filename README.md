@@ -30,7 +30,7 @@
 
 1. 透過docker啟動mongo, postgres
     ```
-    docker-compose up
+    $ docker-compose up
     ```
 2. 初始化API gateway的資料庫
     ```
@@ -53,7 +53,7 @@
     ```
 6. 啟動dcardService
     ```
-    npm start
+    $ npm start
     ```
 7. 呼叫抽卡API
     ```
