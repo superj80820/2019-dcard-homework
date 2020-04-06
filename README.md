@@ -12,7 +12,7 @@
 
 系統圖:
 
-![](https://i.imgur.com/4QjBb4E.png =300x)
+<img src="https://i.imgur.com/4QjBb4E.png" width="300">
 
 時序圖:
 
