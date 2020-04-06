@@ -2,15 +2,31 @@
 
 [![Build Status](https://travis-ci.com/superj80820/dcard-homework.svg?branch=master)](https://travis-ci.com/superj80820/dcard-homework)
 
-## 整體系統
-
-![](https://i.imgur.com/4QjBb4E.png)
-
 ## 整體介紹
 
 透過Golang的Gin架設API gateway來當作microservice的統一路口，並利用此特性來對有需求的DcardService添加rateLimit_middleware。
 
 會這樣實作的目標是希望DcardService能夠符合single responsibility principle，只去管Dcard相關的事物即可，rateLimit_middleware這種「檢查」層級的邏輯移交到API gateway，這樣能夠分享此middleware至不同microservice，並且也可配合ACL middleware這樣有相似性質的middleware來實作，提高cohesion。
+
+## 整體系統
+
+系統圖:
+
+![](https://i.imgur.com/4QjBb4E.png =300x)
+
+時序圖:
+
+![](https://i.imgur.com/5Y7iQY0.png)
+
+IP記錄在mongoDB的ducument格式:
+
+```go=
+type Ip struct {
+	IPAddress   string
+	Count       int
+	ExpiresTime int64
+}
+```
 
 ## 申請條件與實作
 
